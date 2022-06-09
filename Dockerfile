@@ -17,5 +17,5 @@ RUN ./check_for_new_installer
 RUN ./respecit
 RUN rpmdev-setuptree
 RUN ./rebuildit
-#RUN rsync -ai $HOME/rpmbuild/RPMS/ ./RPMS/
-ENTRYPOINT ["/usr/bin/rsync -ai"]
+
+ENTRYPOINT ["/bin/cp","-R"]

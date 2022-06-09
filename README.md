@@ -1,4 +1,4 @@
-# awscliv2-rpm
+# awscliv2-rpm forked from mcenirm/awscliv2-rpm
 
 Automated RPM packaging of AWS CLI v2 using GitHub Actions
 
