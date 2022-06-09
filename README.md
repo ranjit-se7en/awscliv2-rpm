@@ -11,9 +11,9 @@ Only EL7 (RHEL, Centos, ???) are supported now, but other distros are in the [wi
 
 1. `./check_for_new_installer` - download the [installer](https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip) and update various metadata files
 1. `./respecit` - update the spec file to match the downloaded version
-1. `docker-compose build builder` - create the builder image
-1. `docker-compose run builder ./rebuildit` - rebuild the RPM
-1. `docker-compose run tester ./retestit` - test installing the RPM
+1. `docker compose build builder` - create the builder image
+1. `docker compose run builder ./rebuildit` - rebuild the RPM
+1. `docker compose run tester ./retestit` - test installing the RPM
 
 This should result in:
 * no-source RPM: `SRPMS/awscliv2-${VERSION}-${RELEASE}.el7.nosrc.rpm`

@@ -6,7 +6,8 @@ INSTALLER_ZIP=awscli-exe-linux-x86_64.zip
 curl -sLRO https://awscli.amazonaws.com/"$INSTALLER_ZIP"
 sha256sum "$INSTALLER_ZIP" > "$INSTALLER_ZIP".sha256
 echo "$INSTALLER_ZIP".sha256
-unzip -q "$INSTALLER_ZIP"
+unzip -o -q "$INSTALLER_ZIP"
+chmod +x aws/dist/aws
 versions=$(aws/dist/aws --version)
 printf >&2 '= %q\n' $versions
 for pv in $versions

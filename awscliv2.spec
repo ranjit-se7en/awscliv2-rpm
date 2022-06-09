@@ -1,6 +1,5 @@
 Summary: AWS CLI version 2
 License: Apache License 2.0
-# Group: ???
 Name: awscliv2
 URL: https://docs.aws.amazon.com/cli/
 Version: 2.4.18
@@ -25,17 +24,22 @@ sha256sum -c "%{S:1}"
 %build
 
 %install
-sh -x ./install --install-dir %{buildroot}/usr/libexec/awscliv2 --bin-dir %{buildroot}/usr/bin
+sh -x ./install --install-dir %{buildroot}/usr/local/aws-cli --bin-dir %{buildroot}/usr/local/bin
+
 # redo symlinks to avoid complaint about them containing RPM_BUILD_ROOT
-ln -sf ../libexec/awscliv2/v2/current/bin/aws %{buildroot}/usr/bin/aws
-ln -sf ../libexec/awscliv2/v2/current/bin/aws_completer %{buildroot}/usr/bin/aws_completer
-rm -f %{buildroot}/usr/libexec/awscliv2/v2/current
-ln -sf 2.4.18 %{buildroot}/usr/libexec/awscliv2/v2/current
+ln -sf ../aws-cli/v2/current/bin/aws %{buildroot}/usr/local/bin/aws
+ln -sf ../aws-cli/v2/current/bin/aws_completer %{buildroot}/usr/local/bin/aws_completer
+
+rm -f %{buildroot}/usr/local/aws-cli/v2/current
+ln -sf 2.7.6 %{buildroot}/usr/local/aws-cli/v2/current
+
+rm -f %{buildroot}/usr/local/bin/aws
+ln -sf ../aws-cli/v2/current/bin/aws %{buildroot}/usr/local/bin/aws2
 
 %check
-%{buildroot}/usr/bin/aws --version
+%{buildroot}/usr/local/bin/aws2 --version
 
 %files
-/usr/bin/aws
-/usr/bin/aws_completer
-/usr/libexec/awscliv2
+/usr/local/bin/aws2
+/usr/local/bin/aws_completer
+/usr/local/aws-cli
